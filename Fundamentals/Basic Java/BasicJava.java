@@ -73,10 +73,10 @@ public class BasicJava {
         System.out.println(newArray);
     }
     public static void MaxMinAverage(int[] arr){
-        ArrayList<Integer> newArray = new ArrayList<Integer>();
-        int max=arr[0]; 
-        int min=arr[0];
-        int sum=arr[0];
+        ArrayList<Double> newArray = new ArrayList<Double>();
+        double max=arr[0]; 
+        double min=arr[0];
+        double sum=arr[0];
         for(int i=0; i<arr.length; i++){
             if (arr[i] > max){
                 max=arr[i];
@@ -86,7 +86,7 @@ public class BasicJava {
             }
             sum+=arr[i];
         }
-        int avg=sum/arr.length;
+        double avg=sum/arr.length;
         newArray.add(max);
         newArray.add(min);
         newArray.add(avg);

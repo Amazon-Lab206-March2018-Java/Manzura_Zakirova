@@ -16,7 +16,7 @@ public class BasicJavaTest {
          list.SquareArrayValues(array4);
          list.EliminateNegativeValues(array4);
          list.EliminateNegativeValues(array2);
-         list.MaxMinAverage(array3);
+         list.MaxMinAverage(array4);
          int [] array5 ={1, 5, 10, 7, -2};
          list.ShiftArrayValues(array5);
     } 
