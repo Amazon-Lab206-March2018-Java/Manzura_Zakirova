@@ -31,11 +31,7 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		HttpSession session = request.getSession();
-//		session = request.getSession();
-//		int id = (int) session.getAttribute("id");
-//		session.setAttribute("id", id);
+
 		request.setAttribute("teams", Team.getTeams());
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/Index.jsp");
 		view.forward(request, response);

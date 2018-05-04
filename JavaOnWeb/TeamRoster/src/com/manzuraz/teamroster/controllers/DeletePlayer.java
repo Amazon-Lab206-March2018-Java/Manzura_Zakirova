@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.manzuraz.teamroster.models.Player;
+import com.manzuraz.teamroster.models.Team;
 
 /**
  * Servlet implementation class DeletePlayer
@@ -27,7 +31,12 @@ public class DeletePlayer extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int playerId = Integer.parseInt(request.getParameter("playerid"));
+		HttpSession session = request.getSession();
+		int teamid = (int)session.getAttribute("id");
+		Team removefromTeam = Team.findTeams(teamid);
+		Team.removePlayer(removefromTeam,playerId);
+		response.sendRedirect("/TeamRoster/Players");
 	}
 
 	/**

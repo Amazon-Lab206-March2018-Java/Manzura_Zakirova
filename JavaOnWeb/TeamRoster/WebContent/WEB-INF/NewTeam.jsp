@@ -12,6 +12,5 @@
 		<input type="text" name="teamName">
 		<input type="submit" value="Create a team">
 	</form>
-	
 </body>
 </html>

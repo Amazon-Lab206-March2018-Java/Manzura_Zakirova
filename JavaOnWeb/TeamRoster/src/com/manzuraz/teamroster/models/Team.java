@@ -4,20 +4,19 @@ import java.util.ArrayList;
 
 public class Team {
 	private String team_name;
-	private static int id;
-	private static ArrayList<Player> players = new ArrayList<Player>();
-	private static int NumOfPlayers;
+	private static int id = -1;
+	public ArrayList<Player> players = new ArrayList<Player>();
 	public static ArrayList<Team> teams = new ArrayList<Team>();
-
+	
 	public Team(String name) {
 		this.team_name = name;
 		id++;
 		teams.add(this);
+	   
 	}
 	
-	public void addPlayer(Player p) {
-		players.add(p);
-		NumOfPlayers++;
+	public static void addPlayer(Team t, Player p) {
+		t.players.add(p);
 	}
 
 	public String getTeam_name() {
@@ -36,20 +35,8 @@ public class Team {
 		Team.id = id;
 	}
 
-	public static ArrayList<Player> getPlayers() {
+	public ArrayList<Player> getPlayers() {
 		return players;
-	}
-
-	public static void setPlayers(ArrayList<Player> players) {
-		Team.players = players;
-	}
-
-	public static int getNumOfPlayers() {
-		return NumOfPlayers;
-	}
-
-	public static void setNumOfPlayers(int numOfPlayers) {
-		NumOfPlayers = numOfPlayers;
 	}
 	
 	public static ArrayList<Team> getTeams() {
@@ -59,5 +46,8 @@ public class Team {
 	public static Team findTeams(int id) {
 		return teams.get(id);
 	}
-	
+	public static void removePlayer(Team t, int id) {
+		t.players.remove(id);
+	}
+
 }

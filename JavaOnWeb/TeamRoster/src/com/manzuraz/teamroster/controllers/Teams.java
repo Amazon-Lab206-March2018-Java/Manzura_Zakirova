@@ -33,11 +33,12 @@ public class Teams extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (request.getParameter("id") != null) {
-			int teamId = Integer.parseInt( request.getParameter("id")); 
+			int teamId = Integer.parseInt(request.getParameter("id")); 
 			HttpSession session = request.getSession();
 			session.setAttribute("id", teamId );
-			Team team = Team.findTeams(teamId);
-			request.setAttribute("team", team);
+			//unfinished. need to replace the session with .getParameter("id")to be able to view all players when clicking Details link on Home page. 
+			Team t = Team.findTeams(teamId);
+			request.setAttribute("team", t);
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/TeamInfo.jsp");
 			view.forward(request, response);
 		} else {
