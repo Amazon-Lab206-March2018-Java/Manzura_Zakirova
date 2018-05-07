@@ -42,3 +42,8 @@ input {
     text-align:left;
     overflow:scroll;
 	}
+
+
+p {
+	color:green;
+	}

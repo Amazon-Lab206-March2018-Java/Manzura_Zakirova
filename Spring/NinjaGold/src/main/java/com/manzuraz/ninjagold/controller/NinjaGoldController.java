@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class NinjaGoldController {
@@ -30,9 +31,9 @@ public class NinjaGoldController {
 		}
 		return "main.jsp";
 	}
-	
-	@RequestMapping(path="/farm", method=RequestMethod.POST)
-	public String farm(HttpSession session){
+	@RequestMapping(path="/check", method=RequestMethod.POST)
+	public String farm(HttpSession session, @RequestParam(value="building") String building) {
+		if (building.equals("farm")) {
 			Random random = new Random();
 			int winnings = random.nextInt(10)+10;
 			int gold = (int)session.getAttribute("gold");
@@ -43,11 +44,8 @@ public class NinjaGoldController {
 			activity_list.add("Earned " + winnings + " golds from the farm!  " + date.format(new Date()));
 			session.setAttribute("activity", activity_list);
 			return "redirect:/";
-			
 		}
-	
-	@RequestMapping(path="/cave", method=RequestMethod.POST)
-	public String cave(HttpSession session){
+		if (building.equals("cave")) {
 			Random random = new Random();
 			int winnings = random.nextInt(5) + 5;
 			int gold = (int)session.getAttribute("gold");
@@ -58,11 +56,9 @@ public class NinjaGoldController {
 			activity_list.add("Earned " + winnings + " golds from the cave!  " + date.format(new Date()));
 			session.setAttribute("activity", activity_list);
 			return "redirect:/";
-			
-		} 
+		}
 	
-	@RequestMapping(path="/house", method=RequestMethod.POST)
-	public String house(HttpSession session){
+		if (building.equals("house")) {
 			Random random = new Random();
 			int winnings = random.nextInt(3) + 2;
 			int gold = (int)session.getAttribute("gold");
@@ -74,8 +70,7 @@ public class NinjaGoldController {
 			return "redirect:/";
 		}
 	
-	@RequestMapping(path="/casino", method=RequestMethod.POST)
-	public String casino(HttpSession session){
+		 if (building.equals("casino")) {
 			Random random = new Random();
 			int money = random.nextInt(101)-50;
 			int gold = (int)session.getAttribute("gold");
@@ -95,4 +90,7 @@ public class NinjaGoldController {
 				return "redirect:/";
 			}
 		}
+
+		 return "redirect:/";
+	}
 }
