@@ -55,7 +55,7 @@ public class NinjaGoldController {
 			session.setAttribute("gold", gold);
 			ArrayList<String> activity_list = (ArrayList<String>) session.getAttribute("activity");
 			SimpleDateFormat date = new SimpleDateFormat("MMMM dd yyyy, hh:mm a");
-			activity_list.add("Earned " + winnings + " golds from the farm!  " + date.format(new Date()));
+			activity_list.add("Earned " + winnings + " golds from the cave!  " + date.format(new Date()));
 			session.setAttribute("activity", activity_list);
 			return "redirect:/";
 			
